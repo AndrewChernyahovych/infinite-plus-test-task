@@ -1,15 +1,19 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
-import { ImageLibraryOptions, MediaType, launchImageLibrary } from 'react-native-image-picker';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import React, {useState} from 'react';
+import {
+  ImageLibraryOptions,
+  MediaType,
+  launchImageLibrary,
+} from 'react-native-image-picker';
+import {SafeAreaView} from 'react-native-safe-area-context';
 import PhotoLibraryIcon from '../assets/icons/PhotoLibraryIcon';
-import { HomeScreenNavigationProp } from '../types/NavigationTypes';
+import {HomeScreenNavigationProp} from '../types/NavigationTypes';
 
 interface Props {
   navigation: HomeScreenNavigationProp;
 }
 
-const HomeScreen = ({navigation}: Props): React.JSX.Element  => {
+const HomeScreen = ({navigation}: Props): React.JSX.Element => {
   const [selectedImage, setSelectedImage] = useState<string | undefined>(
     undefined,
   );
@@ -18,7 +22,7 @@ const HomeScreen = ({navigation}: Props): React.JSX.Element  => {
 
   const openImagePicker = () => {
     const options: ImageLibraryOptions = {
-      mediaType: "photo" as MediaType,
+      mediaType: 'photo' as MediaType,
       includeBase64: false,
     };
 
@@ -30,7 +34,7 @@ const HomeScreen = ({navigation}: Props): React.JSX.Element  => {
       } else {
         let imageUri = response.assets?.[0]?.uri;
         setSelectedImage(imageUri);
-        navigation.navigate('EditImageScreen', {imageUri: imageUri})
+        navigation.navigate('EditImageScreen', {imageUri: imageUri});
       }
     });
   };
@@ -42,10 +46,10 @@ const HomeScreen = ({navigation}: Props): React.JSX.Element  => {
         <PhotoLibraryIcon width={35} height={35} />
       </TouchableOpacity>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default HomeScreen
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
