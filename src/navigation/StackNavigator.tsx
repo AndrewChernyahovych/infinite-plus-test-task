@@ -17,7 +17,7 @@ const StackNavigator = () => {
       <Stack.Screen
         name="EditImageScreen"
         component={EditImageScreen}
-        options={{headerTitle: 'Edit Image'}}
+        options={{headerTitle: 'Edit Image', headerBackTitle: 'Go back'}}
       />
     </Stack.Navigator>
   );
